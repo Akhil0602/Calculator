@@ -60,13 +60,22 @@ public class calculator extends JFrame implements ActionListener
         }
         else if(s.equals("sqrt"))
         {
-            Double d=Double.parseDouble(tx.getText());
+            ScriptEngineManager em=new ScriptEngineManager();
+            ScriptEngine eng=em.getEngineByName("js");
+            try{
+                Double d=Double.parseDouble(""+eng.eval(tx.getText()));
             tx.setText(""+Math.sqrt(d));
+        }
+            catch(Exception ex){}
         }
         else if(s.equals("1/X"))
         {
-            Double d=Double.parseDouble(tx.getText());
-            tx.setText(""+1/d);
+            ScriptEngineManager em=new ScriptEngineManager();
+            ScriptEngine eng=em.getEngineByName("js");
+            try{
+            Double d=Double.parseDouble(""+eng.eval(tx.getText()));
+            tx.setText(""+1/d);}
+            catch(Exception ex){}
         }
         else if(s.equals("="))
         {
